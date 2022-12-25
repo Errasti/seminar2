@@ -6,6 +6,8 @@ public class Menu {
         ArrayList<Person> data = PersonData.createPersonData();
         boolean flag = true;
         Scanner scan = new Scanner(System.in);
+        Scanner secondScan = new Scanner(System.in);
+        String searchValue;
         int userClick;
         int searchId;
         HashMap<Integer, String> relativeId;
@@ -16,7 +18,8 @@ public class Menu {
             System.out.println("1.Показать всех людей");
             System.out.println("2.Показать родственников конкретного человека");
             System.out.println("3.Экспорт в .txt");
-            System.out.println("4.Завершить работу");
+            System.out.println("4.Поиск человека");
+            System.out.println("5.Завершить работу");
             userClick = scan.nextInt();
             if (userClick == 1) {
                 Person.showAllPerson(data);
@@ -35,7 +38,24 @@ public class Menu {
                 }
             } else if (userClick == 3) {
                 FileExport.exportFile();
-            } else if (userClick == 4) {
+            } else if (userClick == 4){
+                System.out.println("1.Поиск по имени");
+                System.out.println("2.Поиск по ID");
+                System.out.println("3.Выход в главное меню");
+                userClick = scan.nextInt();
+                if (userClick == 1){
+                    System.out.println("Введите имя полностью или частично:");
+                    searchValue = secondScan.nextLine();
+                    Person.searchByName(data, searchValue);
+                } else if (userClick == 2) {
+                    System.out.println("Введите ID");
+                    searchId = scan.nextInt();
+                    Person.searchById(data, searchId);
+                } else if (userClick == 3) {
+                    userInterface();
+                }
+            }
+            else if (userClick == 5) {
                 System.out.println("Завершение работы");
                 flag = false;
             } else {

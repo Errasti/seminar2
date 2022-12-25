@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 
 public class Person {
@@ -84,4 +85,83 @@ public class Person {
         }
         return sb;
     }
+
+    public static void searchByName(ArrayList<Person> personList, String name) {
+        int count = 0;
+        for (var person : personList) {
+            if (person.name.toLowerCase().equals(name.toLowerCase())
+                    | person.name.toLowerCase().contains(name.toLowerCase())) {
+                person.bio();
+                count++;
+            }
+        }
+        if (count == 0) {
+            System.out.println("Совпадний не найдено");
+        }
+    }
+
+    public static void searchById(ArrayList<Person> personList, int id) {
+        int count = 0;
+        for (var person : personList) {
+            if (person.id == id) {
+                person.bio();
+                count++;
+            }
+        }
+        if (count == 0) {
+            System.out.println("Совпадений не найдено");
+        }
+    }
+
+   /* public static void addPerson(ArrayList<Person> personList) {
+        HashMap<Integer, String> relativeHash = null;
+        String relation;
+        int relativeId = 0;
+        String gender;
+        boolean flag = true;
+        Scanner scan = new Scanner(System.in);
+        Scanner scann = new Scanner(System.in);
+        int id = personList.size() + 1;
+        System.out.println("Введите ФИО");
+        String name = scan.nextLine();
+        while (flag) {
+            System.out.println("Выберите пол");
+            System.out.println("1.Мужской");
+            System.out.println("2.Женский");
+            int userClick = scann.nextInt();
+            if (userClick == 1) {
+                gender = "Мужской";
+                flag = false;
+            } else if (userClick == 2) {
+                gender = "Женский";
+                flag = false;
+            } else {
+                System.out.println("Некорректный ввод. Повторите попытку.");
+            }
+        }
+        System.out.println("Введите количество полных лет:");
+        int age = scann.nextInt();
+        System.out.println("Если в базе есть ваш родственник - добавьте его.");
+        System.out.println("1.Добавить");
+        System.out.println("2.Пропустить шаг");
+        int userClick = scann.nextInt();
+        if (userClick == 1) {
+            while (flag) {
+                System.out.println("Введите ID родственника");
+                relativeId = scann.nextInt();
+                for (var person : personList) {
+                    if (person.id == relativeId) {
+                        flag = true;
+                    } else {
+                        System.out.println("ID не найден. Повторите попытку");
+                    }
+                }
+            }
+            System.out.println("Кем вам приходится этот человек: ");
+            relation = scan.nextLine();
+            relativeHash.put(relativeId, relation);
+        } else if (userClick == 2) {
+
+        }
+    } */
 }
