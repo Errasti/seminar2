@@ -38,12 +38,12 @@ public class Menu {
                 }
             } else if (userClick == 3) {
                 FileExport.exportFile();
-            } else if (userClick == 4){
+            } else if (userClick == 4) {
                 System.out.println("1.Поиск по имени");
                 System.out.println("2.Поиск по ID");
                 System.out.println("3.Выход в главное меню");
                 userClick = scan.nextInt();
-                if (userClick == 1){
+                if (userClick == 1) {
                     System.out.println("Введите имя полностью или частично:");
                     searchValue = secondScan.nextLine();
                     Person.searchByName(data, searchValue);
@@ -54,8 +54,7 @@ public class Menu {
                 } else if (userClick == 3) {
                     userInterface();
                 }
-            }
-            else if (userClick == 5) {
+            } else if (userClick == 5) {
                 System.out.println("Завершение работы");
                 flag = false;
             } else {
